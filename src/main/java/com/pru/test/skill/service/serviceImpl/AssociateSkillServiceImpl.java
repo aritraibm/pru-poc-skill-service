@@ -20,8 +20,8 @@ public class AssociateSkillServiceImpl implements AssociateSkillService {
 	private AssociateSkillRepo associateSkillRepo;
 
 	@Override
-	public AssociateSkill getAssociateSkillDetails(Long associateId) {
-		System.out.println("SKILL SERVICE associateId ::::: >>>>"+associateId);
+	public List<AssociateSkill> getAssociateSkillDetails(Long associateId) {
+		//System.out.println("SKILL SERVICE associateId ::::: >>>>"+associateId);
 		// TODO Auto-generated method stub
 		return associateSkillRepo.findByAssociateId(associateId);
 	}

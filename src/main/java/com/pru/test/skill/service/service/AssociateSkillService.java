@@ -12,7 +12,7 @@ import com.pru.test.skill.service.entity.AssociateSkill;
 
 public interface AssociateSkillService {
 
-	AssociateSkill getAssociateSkillDetails(Long associateId);
+	List<AssociateSkill> getAssociateSkillDetails(Long associateId);
 
 	
 }

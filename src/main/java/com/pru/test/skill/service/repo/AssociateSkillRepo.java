@@ -11,6 +11,6 @@ import com.pru.test.skill.service.entity.AssociateSkill;
 @Repository
 public interface AssociateSkillRepo extends JpaRepository<AssociateSkill, Long> {
 
-	AssociateSkill findByAssociateId(Long associateId);
+	List<AssociateSkill> findByAssociateId(Long associateId);
 	
 }

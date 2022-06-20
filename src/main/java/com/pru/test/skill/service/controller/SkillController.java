@@ -36,7 +36,7 @@ public class SkillController {
 	}
 
 	@GetMapping(value = "/get-skill/{associateId}")
-	public AssociateSkill getAssociateWithSkillDetails(@PathVariable Long associateId) {
+	public List<AssociateSkill> getAssociateWithSkillDetails(@PathVariable Long associateId) {
 		
 		return associateSkillService.getAssociateSkillDetails(associateId);
 	}
