@@ -1,24 +1,17 @@
 server:
   port: 9091
-  
+
+
 spring:
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-       dialect = org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    url: jdbc:postgresql://localhost:5432/prudential-onboarding
-    username: postgres
-    password: admin
-    driverClassName: org.postgresql.Driver
   application:
     name: SKILL-SERVICE
   config:
         activate:
             on-profile: dev
+  data:
+    mongodb:
+      uri: mongodb+srv://root:WBJsDZphl9loQGt4@mongodb.lqmn4.mongodb.net/onboarding-prudential?retryWrites=true&w=majority
+
 #  zipkin:
 #    base-url: http://127.0.0.1:9411/
     
