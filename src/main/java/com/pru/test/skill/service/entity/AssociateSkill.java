@@ -1,38 +1,40 @@
 package com.pru.test.skill.service.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name="tbl_associate_skills")
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Document(collection = "AssociateSkills")
 public class AssociateSkill {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long associateSkillId;
-    private Long associateId;
-    private Long skillId;
+	private String associateSkillId;
+    private String associateId;
+    private String skillId;
     private String skillRating;
     
-	public Long getAssociateSkillId() {
+	public String getAssociateSkillId() {
 		return associateSkillId;
 	}
-	public void setAssociateSkillId(Long associateSkillId) {
+	public void setAssociateSkillId(String associateSkillId) {
 		this.associateSkillId = associateSkillId;
 	}
-	public Long getAssociateId() {
+	public String getAssociateId() {
 		return associateId;
 	}
-	public void setAssociateId(Long associateId) {
+	public void setAssociateId(String associateId) {
 		this.associateId = associateId;
 	}
-	public Long getSkillId() {
+	public String getSkillId() {
 		return skillId;
 	}
-	public void setSkillId(Long skillId) {
+	public void setSkillId(String skillId) {
 		this.skillId = skillId;
 	}
 	public String getSkillRating() {
@@ -41,7 +43,7 @@ public class AssociateSkill {
 	public void setSkillRating(String skillRating) {
 		this.skillRating = skillRating;
 	}
-	public AssociateSkill(Long associateSkillId, Long associateId, Long skillId, String skillRating) {
+	public AssociateSkill(String associateSkillId, String associateId, String skillId, String skillRating) {
 		super();
 		this.associateSkillId = associateSkillId;
 		this.associateId = associateId;
