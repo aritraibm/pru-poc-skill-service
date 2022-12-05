@@ -3,8 +3,12 @@ package com.pru.test.skill.service.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Document(collection = "skills")
 public class Skill {
@@ -14,21 +18,11 @@ public class Skill {
 	private String skillName;
 	private String status;
 
-	public Skill(String skillId, String skillName, String status) {
-		super();
-		this.skillId = skillId;
-		this.skillName = skillName;
-		this.status = status;
-	}
 	
 	public Skill(String skillName, String status) {
 		super();
 		this.skillName = skillName;
 		this.status = status;
-	}
-
-	public Skill() {
-		super();
 	}
 
 	public String getSkillId() {
