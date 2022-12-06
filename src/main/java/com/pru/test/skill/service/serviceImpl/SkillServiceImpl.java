@@ -1,6 +1,7 @@
 package com.pru.test.skill.service.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,10 @@ public class SkillServiceImpl implements SkillService {
 		return skillRepo.findAll();
 	}
 
-	
+	@Override
+	public Optional<Skill> getSkill(String id) {
+		
+		return skillRepo.findById(id);
+	}
 
 }

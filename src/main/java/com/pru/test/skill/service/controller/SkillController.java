@@ -1,6 +1,7 @@
 package com.pru.test.skill.service.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +35,7 @@ public class SkillController {
 	
 	@PreAuthorize("hasAnyRole({'ROLE_ASSOCIATE','ROLE_ONBOARDING_REVIEWER','ROLE_ONBOARDING_MANAGER'})")
 	@GetMapping(value = "/get-skill-master")
-	public List<Skill> saveUser() {
+	public List<Skill> getAllSkill() {
 		
 		return skillService.getSkillMaster();
 	}
@@ -44,6 +45,16 @@ public class SkillController {
 	public List<AssociateSkill> getAssociateWithSkillDetails(@PathVariable String associateId) {
 		
 		return associateSkillService.getAssociateSkillDetails(associateId);
+	}
+	
+	@PreAuthorize("hasAnyRole({'ROLE_ASSOCIATE','ROLE_ONBOARDING_REVIEWER','ROLE_ONBOARDING_MANAGER'})")
+	@GetMapping(value = "/skill/{id}")
+	public Skill getSkill(@PathVariable String id) {
+		Optional<Skill> skill= skillService.getSkill(id);
+		if (skill.isPresent()) {
+			return skill.get();
+		}
+		return null;
 	}
 
 }
