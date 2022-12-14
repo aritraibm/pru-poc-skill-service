@@ -12,8 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 @Service
 public class JwtTokenUtilService {
 
@@ -35,7 +33,17 @@ public class JwtTokenUtilService {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> entity=new HttpEntity<String>(token.trim(), headers);
 		Boolean valid = restTemplate.postForObject(uri, entity, Boolean.class);
-		return valid;
+		boolean vl= getLogout(token);
+		return valid && !vl ?true:false;
+	}
+	
+	public boolean getLogout(String token) {
+		URI uri=URI.create(getUrl()+"/logout/out");
+		HttpHeaders headers=new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		HttpEntity<String> entity=new HttpEntity<String>(token.trim(), headers);
+		LogoutUserToken logoutUserToken = restTemplate.postForObject(uri, entity, LogoutUserToken.class);
+		return logoutUserToken.isLogout();
 	}
 	
 	public User getUserDetails(String token){
